@@ -3,6 +3,8 @@
     <!--Content Starts-->
     <div class='main-content'>
          <div class="wrapper">
+             <h1>ADD admin GUI</h1>
+                <br> <br>
                 <form action="" method="post">
                     <table class="tbl-30">
                         <tr>
@@ -41,12 +43,12 @@
         ";
         $res = mysqli_query($conn,$sql) or die();
         if($res==TRUE){
-            $_SESSION['add'] = "Admin added";
+            $_SESSION['add'] = "<div class='success'>Admin added thành công</div>";
             header("location:".SITEURL.'admin/ql_admin.php');
         }
         else{
-            $_SESSION['add'] = 'Không Thành công';
-            header("location".SITEURL.'admin/add_admin.php');
+            $_SESSION['add'] = "<div class='error'>Không Thành công</div>";
+            header("location".SITEURL.'admin/ql_admin.php');
         }
     }    
 ?>

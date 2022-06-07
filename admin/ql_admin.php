@@ -7,6 +7,27 @@
                <br>
                <a href="add_admin.php" class="btn-primary">Add Admin</a>
                <br> <br>
+               <?php
+                    //insert
+                    if(isset($_SESSION['add']))
+                    {
+                         echo $_SESSION ['add'];
+                         unset($_SESSION ['add']);
+                    }
+                    //delete
+                    if(isset($_SESSION['delete']))
+                    {
+                         echo $_SESSION ['delete'];
+                         unset($_SESSION ['delete']);
+                    }
+                    //update
+                    if(isset($_SESSION['update']))
+                    {
+                         echo $_SESSION ['update'];
+                         unset($_SESSION ['update']);
+                    }
+               ?>
+               <br> <br>
                <table class="tbl-full">
                     <tr>
                          <th>S.N.</th>
@@ -14,33 +35,40 @@
                          <th>Username</th>
                          <th>Action</th>   
                     </tr>
-                    <tr>
-                         <td>1.</td>
-                         <td>Vija thape</td>
-                         <td>Vijay thape</td>
-                         <td>
-                              <a href="#" class="btn-option">Update Admin</a>
-                              <a href="#" class="btn-option">Delete Admin</a>
-                         </td>
-                    </tr>
-                    <tr>
-                         <td>2.</td>
-                         <td>Vija thape</td>
-                         <td>Vijay thape</td>
-                         <td>
-                              <a href="#" class="btn-option">Update Admin</a>
-                              <a href="#" class="btn-option">Delete Admin</a>
-                         </td>
-                    </tr>
-                    <tr>
-                         <td>3.</td>
-                         <td>Vija thape</td>
-                         <td>Vijay thape</td>
-                         <td>
-                              <a href="#" class="btn-option">Update Admin</a>
-                              <a href="#" class="btn-option">Delete Admin</a>
-                         </td>
-                    </tr>
+                    
+
+                    <?php 
+                         $sql = "SELECT * FROM tbl_admin";
+                         $res = mysqli_query($conn,$sql);
+                         $sn=1;
+                         if($res==TRUE){
+                              $count = mysqli_num_rows($res);
+                              if($count>0)
+                              {
+                                   while($rows = mysqli_fetch_assoc($res)){
+                                        $id=$rows['id'];
+                                        $full_name=$rows['full_name'];
+                                        $user_name=$rows['user_name'];
+                                        ?>
+                                             <tr>
+                                                  <td><?php echo $sn++; ?></td>
+                                                  <td><?php echo $full_name ?></td>
+                                                  <td><?php echo $user_name ?></td>
+                                                  <td>
+                                                       <a href="<?php echo SITEURL; ?>admin/update_admin.php?id=<?php echo $id; ?>" class="btn-option">Update Admin</a>
+                                                       <a href="<?php echo SITEURL; ?>admin/del_admin.php?id=<?php echo $id; ?>" class="btn-option">Delete Admin</a>
+                                                  </td>
+                                             </tr>
+
+                                        <?php 
+                                   }
+
+                              }
+                              
+                              
+                         }
+                    ?>
+
                </table>
          </div>
     </div>
