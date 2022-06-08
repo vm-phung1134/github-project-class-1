@@ -4,7 +4,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 .menu{
-    border-bottom:1px solid grey;
+    border-bottom:1px solid rgb(148, 140, 140);
 }
 .menu ul{
     list-style-type: none;
@@ -66,7 +66,7 @@ table tr td{
     text-decoration: none;
 }
 .btn-primary:hover{
-    color: black;
+    color: rgb(194, 6, 6);
     background-color: white;
 }
 .btn-option{
@@ -76,9 +76,9 @@ table tr td{
     text-decoration: none;
 }
 .btn-option:hover{
-    color: black;
+    color: rgb(5, 5, 5);
     background-color: white;
 }
 .tbl-30{
-    width: 30%;
+    color: aliceblue;
 }
